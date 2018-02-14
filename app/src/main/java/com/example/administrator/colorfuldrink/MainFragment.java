@@ -1,6 +1,8 @@
 package com.example.administrator.colorfuldrink;
 
+import android.view.Gravity;
 import android.view.View;
+import android.widget.GridView;
 
 import com.example.administrator.colorfuldrink.base.BaseApplication;
 import com.example.administrator.colorfuldrink.base.BaseFragment;
@@ -15,6 +17,9 @@ import com.youth.banner.Banner;
 public class MainFragment extends BaseFragment {
 
     Banner banner;
+    GridView gridView;
+    MainMenuAdapter adapter;
+
 
     @Override
     protected int getLayoutID() {
@@ -27,6 +32,12 @@ public class MainFragment extends BaseFragment {
         banner.setImageLoader(new GlideImageLoader());
         banner.setImages(BaseApplication.images);
         banner.start();
+
+        gridView = view.findViewById(R.id.gv_menu);
+        gridView.setVerticalSpacing(10);
+        gridView.setGravity(Gravity.CENTER);
+        adapter = new MainMenuAdapter(getContext());
+        gridView.setAdapter(adapter);
     }
 
     @Override
